@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -31,6 +32,41 @@
     overflow-x: hidden;
   }
 
+  /* 所有照片統一暖色濾鏡，跟頁面大地色系融合 */
+  .hero-bg,
+  .speaker-photo,
+  .program-photo {
+    filter: sepia(0.28) brightness(0.93) saturate(0.85);
+  }
+
+  /* TOPBAR */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(245,239,227,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(74,55,40,0.08);
+    z-index: 100;
+  }
+  .topbar-brand {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--earth);
+    letter-spacing: 3px;
+  }
+  .topbar-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--mist);
+    letter-spacing: 2px;
+  }
+
   /* HERO */
   .hero {
     position: relative;
@@ -41,30 +77,26 @@
     padding: 80px 60px;
     overflow: hidden;
   }
-
   .hero-bg {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center right;
-    opacity: 0.22;
+    opacity: 0.28;
     pointer-events: none;
   }
-
   .hero::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background:
-      linear-gradient(to right, rgba(245,239,227,0.96) 40%, rgba(245,239,227,0.45) 100%),
+      linear-gradient(to right, rgba(245,239,227,0.97) 38%, rgba(245,239,227,0.42) 100%),
       radial-gradient(ellipse 40% 50% at 10% 80%, rgba(184,148,58,0.06) 0%, transparent 60%);
     pointer-events: none;
     z-index: 1;
   }
-
   .hero > *:not(.hero-bg) { position: relative; z-index: 2; }
-
   .hero-label {
     font-family: 'Cormorant Garamond', serif;
     font-size: 13px;
@@ -77,7 +109,6 @@
     align-items: center;
     gap: 16px;
   }
-
   .hero-label::before {
     content: '';
     display: inline-block;
@@ -85,7 +116,6 @@
     height: 1px;
     background: var(--matcha);
   }
-
   .hero-kicker {
     font-family: 'Noto Serif TC', serif;
     font-size: clamp(13px, 2vw, 16px);
@@ -94,7 +124,6 @@
     letter-spacing: 3px;
     margin-bottom: 24px;
   }
-
   .hero-title {
     font-family: 'Noto Serif TC', serif;
     font-size: clamp(42px, 8vw, 96px);
@@ -104,7 +133,6 @@
     letter-spacing: -1px;
     margin-bottom: 12px;
   }
-
   .hero-title span {
     display: block;
     font-size: clamp(22px, 4vw, 48px);
@@ -113,7 +141,6 @@
     letter-spacing: 4px;
     margin-top: 8px;
   }
-
   .hero-subtitle {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(18px, 3vw, 28px);
@@ -123,7 +150,6 @@
     margin-bottom: 48px;
     font-weight: 300;
   }
-
   .hero-desc {
     max-width: 520px;
     font-size: 15px;
@@ -132,7 +158,6 @@
     margin-bottom: 60px;
     font-weight: 300;
   }
-
   .hero-deco {
     position: absolute;
     right: 60px;
@@ -148,7 +173,6 @@
     pointer-events: none;
     user-select: none;
   }
-
   .vertical-text {
     position: absolute;
     right: 40px;
@@ -162,16 +186,15 @@
     font-weight: 300;
   }
 
-  /* DIVIDER */
+  /* SECTION DIVIDER */
   .section-divider {
     display: flex;
     align-items: center;
     gap: 24px;
-    margin: 0 60px 0;
+    margin: 0 60px;
     padding: 40px 0;
     border-top: 1px solid rgba(74,55,40,0.1);
   }
-
   .divider-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 72px;
@@ -180,7 +203,6 @@
     line-height: 1;
     flex-shrink: 0;
   }
-
   .divider-label {
     font-family: 'Noto Serif TC', serif;
     font-size: 24px;
@@ -188,7 +210,6 @@
     color: var(--earth);
     letter-spacing: 2px;
   }
-
   .divider-sub {
     font-family: 'Cormorant Garamond', serif;
     font-size: 14px;
@@ -198,18 +219,14 @@
     margin-top: 4px;
   }
 
-  /* INTRO SECTION */
-  .intro {
-    padding: 60px 60px 80px;
-  }
-
+  /* INTRO */
+  .intro { padding: 60px 60px 80px; }
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: start;
   }
-
   .intro-quote {
     font-family: 'Noto Serif TC', serif;
     font-size: clamp(20px, 3vw, 30px);
@@ -220,75 +237,46 @@
     padding-left: 32px;
     border-left: 2px solid var(--gold);
   }
-
   .intro-body {
     font-size: 15px;
     line-height: 2.1;
     color: var(--earth-light);
   }
-
-  .intro-body p + p {
-    margin-top: 20px;
-  }
+  .intro-body p + p { margin-top: 20px; }
 
   /* SPEAKERS */
-  .speakers {
-    padding: 0 60px 80px;
-  }
-
+  .speakers { padding: 0 60px 80px; }
   .speaker-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2px;
     margin-top: 40px;
   }
-
   .speaker-card {
     background: var(--snow);
     padding: 0 0 48px 0;
     position: relative;
     overflow: hidden;
   }
-
-  .speaker-photo {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    margin-bottom: 40px;
-  }
-
-  .speaker-photo-placeholder {
-    width: 100%;
-    height: 260px;
-    background: var(--paper);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 40px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: var(--mist);
-    font-style: italic;
-  }
-
-  .speaker-content {
-    padding: 0 44px;
-  }
-
   .speaker-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 3px;
     height: 100%;
+    z-index: 3;
   }
-
   .speaker-card.hokkaido::before { background: var(--matcha); }
   .speaker-card.yamanashi::before { background: var(--gold); }
-
+  .speaker-photo {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-bottom: 40px;
+  }
+  .speaker-content { padding: 0 44px; }
   .speaker-region {
     font-family: 'Cormorant Garamond', serif;
     font-size: 11px;
@@ -297,10 +285,8 @@
     text-transform: uppercase;
     margin-bottom: 20px;
   }
-
   .speaker-card.hokkaido .speaker-region { color: var(--matcha); }
   .speaker-card.yamanashi .speaker-region { color: var(--gold); }
-
   .speaker-name {
     font-family: 'Noto Serif TC', serif;
     font-size: 28px;
@@ -309,7 +295,6 @@
     margin-bottom: 8px;
     letter-spacing: 2px;
   }
-
   .speaker-role {
     font-size: 13px;
     color: var(--mist);
@@ -317,13 +302,11 @@
     letter-spacing: 1px;
     line-height: 1.8;
   }
-
   .speaker-desc {
     font-size: 14px;
     line-height: 2;
     color: var(--earth-light);
   }
-
   .speaker-deco {
     position: absolute;
     bottom: 20px;
@@ -337,14 +320,11 @@
     pointer-events: none;
   }
 
-  /* CONTENT PROGRAM */
+  /* PROGRAM */
   .program {
-    padding: 0 60px 80px;
+    padding: 60px 60px 80px;
     background: var(--snow);
-    margin: 0 -0px;
-    padding-top: 60px;
   }
-
   .program-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -352,15 +332,13 @@
     margin-top: 48px;
     border: 1px solid rgba(74,55,40,0.1);
   }
-
   .program-item {
     padding: 0 0 36px 0;
     border-right: 1px solid rgba(74,55,40,0.08);
     position: relative;
+    overflow: hidden;
   }
-
   .program-item:last-child { border-right: none; }
-
   .program-photo {
     width: 100%;
     height: 160px;
@@ -369,26 +347,7 @@
     display: block;
     margin-bottom: 28px;
   }
-
-  .program-photo-placeholder {
-    width: 100%;
-    height: 160px;
-    background: var(--paper);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 28px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: rgba(74,55,40,0.3);
-    font-style: italic;
-  }
-
-  .program-text {
-    padding: 0 28px;
-  }
-
+  .program-text { padding: 0 24px; }
   .program-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 48px;
@@ -397,7 +356,6 @@
     line-height: 1;
     margin-bottom: 16px;
   }
-
   .program-title {
     font-family: 'Noto Serif TC', serif;
     font-size: 15px;
@@ -407,13 +365,11 @@
     margin-bottom: 12px;
     letter-spacing: 1px;
   }
-
   .program-desc {
     font-size: 12px;
     line-height: 1.9;
     color: var(--mist);
   }
-
   .program-tag {
     display: inline-block;
     margin-top: 16px;
@@ -424,16 +380,12 @@
     text-transform: uppercase;
     font-family: 'Cormorant Garamond', serif;
   }
-
   .tag-hokkaido { color: var(--matcha); border-color: var(--matcha-light); }
   .tag-yamanashi { color: var(--gold); border-color: var(--gold-light); }
   .tag-both { color: var(--earth-light); border-color: rgba(74,55,40,0.25); }
 
   /* WHO */
-  .who {
-    padding: 60px 60px 80px;
-  }
-
+  .who { padding: 60px 60px 80px; }
   .who-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -441,7 +393,6 @@
     margin-top: 48px;
     border-top: 1px solid rgba(74,55,40,0.1);
   }
-
   .who-item {
     display: flex;
     gap: 20px;
@@ -449,13 +400,11 @@
     padding: 28px 32px 28px 0;
     border-bottom: 1px solid rgba(74,55,40,0.07);
   }
-
   .who-item:nth-child(even) {
     padding-left: 40px;
     padding-right: 0;
     border-left: 1px solid rgba(74,55,40,0.07);
   }
-
   .who-dot {
     width: 6px;
     height: 6px;
@@ -464,7 +413,6 @@
     flex-shrink: 0;
     margin-top: 8px;
   }
-
   .who-text {
     font-size: 14px;
     line-height: 1.9;
@@ -478,7 +426,6 @@
     position: relative;
     overflow: hidden;
   }
-
   .highlights::before {
     content: '日本';
     position: absolute;
@@ -491,28 +438,13 @@
     line-height: 1;
     pointer-events: none;
   }
-
-  .highlights .section-title {
-    color: var(--cream);
-  }
-
-  .highlights .section-title::after {
-    background: var(--gold-light);
-  }
-
   .hl-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin-top: 56px;
   }
-
-  .hl-item {
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-  }
-
+  .hl-item { display: flex; gap: 24px; align-items: flex-start; }
   .hl-icon {
     width: 40px;
     height: 40px;
@@ -526,11 +458,7 @@
     color: var(--gold-light);
     font-style: italic;
   }
-
-  .hl-text {
-    flex: 1;
-  }
-
+  .hl-text { flex: 1; }
   .hl-title {
     font-family: 'Noto Serif TC', serif;
     font-size: 16px;
@@ -539,20 +467,52 @@
     margin-bottom: 8px;
     letter-spacing: 1px;
   }
-
   .hl-desc {
     font-size: 13px;
     line-height: 1.9;
     color: rgba(245,239,227,0.55);
   }
 
-  /* FOOTER / CTA */
-  .cta {
-    padding: 100px 60px;
-    text-align: center;
-    position: relative;
+  /* SECTION LABEL / TITLE (shared) */
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--matcha);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--matcha);
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 300;
+    color: var(--earth);
+    letter-spacing: 2px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .section-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--mist);
+    letter-spacing: 2px;
+    font-weight: 300;
   }
 
+  /* CTA */
+  .cta { padding: 100px 60px; text-align: center; }
   .cta-eyebrow {
     font-family: 'Cormorant Garamond', serif;
     font-size: 13px;
@@ -566,7 +526,6 @@
     justify-content: center;
     gap: 20px;
   }
-
   .cta-eyebrow::before,
   .cta-eyebrow::after {
     content: '';
@@ -575,7 +534,6 @@
     height: 1px;
     background: var(--matcha-light);
   }
-
   .cta-title {
     font-family: 'Noto Serif TC', serif;
     font-size: clamp(28px, 5vw, 52px);
@@ -585,7 +543,6 @@
     margin-bottom: 16px;
     letter-spacing: 2px;
   }
-
   .cta-sub {
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
@@ -594,7 +551,6 @@
     margin-bottom: 48px;
     font-weight: 300;
   }
-
   .cta-btn {
     display: inline-block;
     padding: 18px 60px;
@@ -608,84 +564,8 @@
     transition: all 0.3s ease;
     border: 1px solid var(--earth);
   }
+  .cta-btn:hover { background: transparent; color: var(--earth); }
 
-  .cta-btn:hover {
-    background: transparent;
-    color: var(--earth);
-  }
-
-  /* Section title shared */
-  .section-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--matcha);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--matcha);
-  }
-
-  .section-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(24px, 4vw, 38px);
-    font-weight: 300;
-    color: var(--earth);
-    letter-spacing: 2px;
-    line-height: 1.4;
-    margin-bottom: 8px;
-  }
-
-  .section-title-en {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    font-style: italic;
-    color: var(--mist);
-    letter-spacing: 2px;
-    font-weight: 300;
-  }
-
-  /* top bar */
-  .topbar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-    background: rgba(245,239,227,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(74,55,40,0.08);
-    z-index: 100;
-  }
-
-  .topbar-brand {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--earth);
-    letter-spacing: 3px;
-  }
-
-  .topbar-tag {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 12px;
-    font-style: italic;
-    color: var(--mist);
-    letter-spacing: 2px;
-  }
-
-  /* Decorative horizontal rule */
   .ornament {
     display: flex;
     align-items: center;
@@ -696,7 +576,6 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
   }
-
   .ornament::before,
   .ornament::after {
     content: '';
@@ -706,6 +585,7 @@
     background: rgba(74,55,40,0.15);
   }
 
+  /* MOBILE */
   @media (max-width: 768px) {
     .hero { padding: 100px 28px 60px; }
     .hero-deco { display: none; }
@@ -733,25 +613,24 @@
 
 <!-- HERO -->
 <section class="hero">
-  <!-- ① Hero 背景圖：換成你的圖片路徑，建議橫幅風景照，1600px 以上寬 -->
-  <img class="hero-bg" src="your-hero-photo.jpg" alt="">
+  <!-- 換成自己的照片：把 src 改成你的圖片檔名，例如 src="hero.jpg" -->
+  <img class="hero-bg" src="https://picsum.photos/seed/japan-countryside/1600/900" alt="">
   <div class="vertical-text">北海道 × 山梨｜地方生活分享會</div>
   <div class="hero-deco">日</div>
-
   <div class="hero-label">Special Sharing Session</div>
   <div class="hero-kicker">日本の地方日常</div>
   <h1 class="hero-title">
     日本的地方日常
     <span>北海道 × 山梨</span>
   </h1>
-  <div class="hero-subtitle">Living in the Land · Hokkaido Life & Yamanashi Farm Stories</div>
+  <div class="hero-subtitle">Living in the Land · Hokkaido Life &amp; Yamanashi Farm Stories</div>
   <p class="hero-desc">
     不是旅遊分享，是兩個住在日本的台灣人，帶你看她們實際生活的那個日本。<br>
     北海道的地方日常，還有山梨農家的一年四季。
   </p>
 </section>
 
-<!-- INTRO -->
+<!-- 01 關於這場分享 -->
 <div class="section-divider">
   <div class="divider-num">01</div>
   <div>
@@ -773,7 +652,7 @@
   </div>
 </section>
 
-<!-- SPEAKERS -->
+<!-- 02 兩位講者 -->
 <div class="section-divider">
   <div class="divider-num">02</div>
   <div>
@@ -785,11 +664,8 @@
 <section class="speakers">
   <div class="speaker-grid">
     <div class="speaker-card hokkaido">
-      <!-- ② 北海道講者照片：換成講者或北海道生活照，建議正方形或接近 4:3，人像置頂 -->
-      <img class="speaker-photo" src="your-hokkaido-photo.jpg" alt="北海道講者">
-      <!-- 若還沒有照片，把上面那行換成這行：
-      <div class="speaker-photo-placeholder">北海道 · 照片</div>
-      -->
+      <!-- 換成講者照片：src="hokkaido-speaker.jpg" -->
+      <img class="speaker-photo" src="https://picsum.photos/seed/hokkaido-snow/800/520" alt="北海道">
       <div class="speaker-content">
         <div class="speaker-region">Hokkaido · 北海道</div>
         <div class="speaker-name">札幌の声</div>
@@ -804,11 +680,8 @@
       <div class="speaker-deco">北</div>
     </div>
     <div class="speaker-card yamanashi">
-      <!-- ② 山梨講者照片：換成講者或農田生活照，建議正方形或接近 4:3，人像置頂 -->
-      <img class="speaker-photo" src="your-yamanashi-photo.jpg" alt="山梨講者">
-      <!-- 若還沒有照片，把上面那行換成這行：
-      <div class="speaker-photo-placeholder">山梨 · 照片</div>
-      -->
+      <!-- 換成講者照片：src="yamanashi-speaker.jpg" -->
+      <img class="speaker-photo" src="https://picsum.photos/seed/rice-paddy-field/800/520" alt="山梨農家">
       <div class="speaker-content">
         <div class="speaker-region">Yamanashi · 山梨</div>
         <div class="speaker-name">農家の妻</div>
@@ -825,21 +698,20 @@
   </div>
 </section>
 
-<!-- PROGRAM -->
+<!-- 03 分享內容 -->
 <div class="section-divider">
   <div class="divider-num">03</div>
   <div>
     <div class="divider-label">分享內容</div>
-    <div class="divider-sub">Program & Content</div>
+    <div class="divider-sub">Program &amp; Content</div>
   </div>
 </div>
 
 <section class="program">
   <div class="program-grid">
     <div class="program-item">
-      <!-- ③ 主題圖片：北海道風景／地方文化照 -->
-      <img class="program-photo" src="your-program-1.jpg" alt="北海道生活">
-      <!-- 沒有照片先用：<div class="program-photo-placeholder">北海道</div> -->
+      <!-- 換成主題照片：src="program-1.jpg" -->
+      <img class="program-photo" src="https://picsum.photos/seed/sapporo-winter/600/320" alt="北海道生活">
       <div class="program-text">
         <div class="program-num">01</div>
         <div class="program-title">北海道<br>生活視角</div>
@@ -848,9 +720,8 @@
       </div>
     </div>
     <div class="program-item">
-      <!-- ③ 主題圖片：農田、稻穗、農家日常照 -->
-      <img class="program-photo" src="your-program-2.jpg" alt="山梨農家">
-      <!-- 沒有照片先用：<div class="program-photo-placeholder">山梨農家</div> -->
+      <!-- 換成主題照片：src="program-2.jpg" -->
+      <img class="program-photo" src="https://picsum.photos/seed/farm-harvest/600/320" alt="山梨農家">
       <div class="program-text">
         <div class="program-num">02</div>
         <div class="program-title">山梨農家<br>日常</div>
@@ -859,9 +730,8 @@
       </div>
     </div>
     <div class="program-item">
-      <!-- ③ 主題圖片：祭典、市場、小鎮街道照 -->
-      <img class="program-photo" src="your-program-3.jpg" alt="地方文化">
-      <!-- 沒有照片先用：<div class="program-photo-placeholder">文化風土</div> -->
+      <!-- 換成主題照片：src="program-3.jpg" -->
+      <img class="program-photo" src="https://picsum.photos/seed/local-town/600/320" alt="地方文化">
       <div class="program-text">
         <div class="program-num">03</div>
         <div class="program-title">地方文化<br>與風土故事</div>
@@ -870,20 +740,18 @@
       </div>
     </div>
     <div class="program-item">
-      <!-- ③ 主題圖片：地方食材、選物、產品平拍照 -->
-      <img class="program-photo" src="your-program-4.jpg" alt="地方選物">
-      <!-- 沒有照片先用：<div class="program-photo-placeholder">選物物產</div> -->
+      <!-- 換成主題照片：src="program-4.jpg" -->
+      <img class="program-photo" src="https://picsum.photos/seed/craft-food/600/320" alt="地方選物">
       <div class="program-text">
         <div class="program-num">04</div>
         <div class="program-title">地方選物<br>與特色物產</div>
         <div class="program-desc">她們帶來的好物，每一樣都有來歷——是哪個農家、哪個產地、為什麼值得帶回家。</div>
-        <div class="program-tag tag-both">Craft & Food</div>
+        <div class="program-tag tag-both">Craft &amp; Food</div>
       </div>
     </div>
     <div class="program-item">
-      <!-- ③ 主題圖片：旅行途中、車窗外、地圖或路途照 -->
-      <img class="program-photo" src="your-program-5.jpg" alt="深度旅行">
-      <!-- 沒有照片先用：<div class="program-photo-placeholder">旅行靈感</div> -->
+      <!-- 換成主題照片：src="program-5.jpg" -->
+      <img class="program-photo" src="https://picsum.photos/seed/rural-road/600/320" alt="深度旅行">
       <div class="program-text">
         <div class="program-num">05</div>
         <div class="program-title">深度旅行<br>靈感</div>
@@ -894,7 +762,7 @@
   </div>
 </section>
 
-<!-- WHO -->
+<!-- 04 適合的你 -->
 <div class="section-divider">
   <div class="divider-num">04</div>
   <div>
@@ -940,13 +808,12 @@
   </div>
   <div class="section-title" style="color: var(--cream);">這場分享特別的地方</div>
   <div class="section-title-en" style="color: rgba(245,239,227,0.4);">Event Highlights</div>
-
   <div class="hl-grid">
     <div class="hl-item">
       <div class="hl-icon">一</div>
       <div class="hl-text">
-        <div class="hl-title">住在那裡的人說的話，分量不一樣</div>
-        <div class="hl-desc">她們不是去旅行再回來分享，是真的住在那裡。日常的積累，讓這些故事有重量。</div>
+        <div class="hl-title">兩個台灣人，選擇在日本生活</div>
+        <div class="hl-desc">一個在北海道的城市裡扎根，一個嫁進山梨的農家。她們帶來的，是只有住在那裡才看得見的日本。</div>
       </div>
     </div>
     <div class="hl-item">
@@ -979,6 +846,7 @@
   <div class="cta-title">換個角度，看一次日本</div>
   <div class="cta-sub">Discover the Japan beyond the guidebook</div>
   <br><br>
+  <!-- 把 href="#" 換成你的報名表單連結 -->
   <a href="#" class="cta-btn">立即報名</a>
   <div class="ornament">◇</div>
   <div style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--mist); letter-spacing: 3px; font-style: italic;">
